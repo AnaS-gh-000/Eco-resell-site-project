@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banyan &amp; Porch</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Montserrat:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+    />
+
+  <!-- Material Symbols / FontAwesome for clean icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Sticky Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="brand-block" data-nav="home">
+        <h1 class="brand-title">Banyan &amp; Porch</h1>
+        <p class="brand-subtitle">Good evening, neighbor— have a look around.</p>
+      </div>
+
+      <nav class="nav-pill-container" aria-label="Primary Navigation">
+        <button class="nav-btn active" data-target="home">Home</button>
+        <button class="nav-btn" data-target="neighbor-shares">Neighbor Shares</button>
+        <button class="nav-btn" data-target="fix-mend">Fix &amp; Mend</button>
+        <button class="nav-btn" data-target="share-pin">Share or Pin</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Temporary Toast / Validation Banner -->
+  <div id="toastMessage" class="toast-banner" role="status" aria-live="polite"></div>
+
+  <!-- =========================================================
+       1. HOME SECTION (4 Auto-Sliding Hero Banners)
+       ========================================================= -->
+  <main id="section-home" class="page-section active-section">
+    <section class="home-hero" id="homeHero">
+      <div class="home-slides-wrapper" id="homeSlidesWrapper">
+        <!-- Slide 1 -->
+        <div
+          class="home-slide active"
+          style="background-image: linear-gradient(90deg, rgba(24,18,14,0.58) 0%, rgba(24,18,14,0.22) 65%, rgba(24,18,14,0.12) 100%), url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=80');"
+        >
+          <div class="home-slide-content light-text">
+            <h2>Things looking for a second home right around the corner.</h2>
+            <p>
+              No bidding wars, no awkward haggling, and no long drives. Pick up gently in a
+              building lobby when the timing feels right for both of you.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div
+          class="home-slide"
+          style="background-image: linear-gradient(90deg, rgba(35,26,18,0.48) 0%, rgba(35,26,18,0.18) 65%, rgba(35,26,18,0.08) 100%), url('https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1800&q=80');"
+        >
+          <div class="home-slide-content light-text">
+            <h2>Exchange old or unwanted items without hassle to find them a home.</h2>
+            <p>
+              No bidding wars, no awkward haggling, and no long drives. Pick up gently in a
+              building lobby when the timing feels right for both of you.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div
+          class="home-slide"
+          style="background-image: linear-gradient(90deg, rgba(250,246,240,0.68) 0%, rgba(250,246,240,0.32) 60%, rgba(250,246,240,0.05) 100%), url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1800&q=80');"
+        >
+          <div class="home-slide-content dark-text">
+            <h2>Decorate your household with items that catch your eye.</h2>
+            <p>
+              No bidding wars, no awkward haggling, and no long drives. Pick up gently in a
+              building lobby when the timing feels right for both of you.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div
+          class="home-slide"
+          style="background-image: linear-gradient(90deg, rgba(30,36,22,0.55) 0%, rgba(30,36,22,0.22) 65%, rgba(30,36,22,0.10) 100%), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1800&q=80');"
+        >
+          <div class="home-slide-content light-text">
+            <h2>Repair the old, broken items with professional local help.</h2>
+            <p>
+              No bidding wars, no awkward haggling, and no long drives. Pick up gently in a
+              building lobby when the timing feels right for both of you.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-arrow left-arrow" id="homePrevBtn" aria-label="Previous slide">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="carousel-arrow right-arrow" id="homeNextBtn" aria-label="Next slide">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       2. NEIGHBOR SHARES SECTION
+       ========================================================= -->
+  <main id="section-neighbor-shares" class="page-section">
+    <!-- Auto-sliding Featured Product Hero -->
+    <section class="neighbor-hero" id="neighborHero">
+      <div class="neighbor-hero-bg" id="neighborHeroBg"></div>
+
+      <button class="carousel-arrow left-arrow dark-arrow" id="neighborPrevBtn" aria-label="Previous product">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="carousel-arrow right-arrow dark-arrow" id="neighborNextBtn" aria-label="Next product">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <!-- Synced Orange-Border Product Card on Right -->
+      <div class="newly-placed-card" id="newlyPlacedCard" role="button" tabindex="0">
+        <span class="newly-placed-heading">Newly placed item:</span>
+        <p class="newly-placed-title" id="newlyPlacedTitle">Grey cloth fabric sneakers</p>
+        <span class="newly-placed-link">Click this to view</span>
+      </div>
+
+      <!-- Bottom Search & Karma Pill -->
+      <div class="hero-bottom-bar">
+        <div class="search-pill">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            id="itemSearchInput"
+            placeholder="Search to find items..."
+            aria-label="Search to find items"
+          />
+        </div>
+        <div class="karma-pill">
+          <span class="karma-count-display">98</span> Karma
+        </div>
+      </div>
+    </section>
+
+    <!-- Neighbor Shares Content Grid + Right Pickup Pass Box -->
+    <section class="neighbor-content-area" id="neighborGridAnchor">
+      <div class="neighbor-layout">
+        <!-- Left: 4+ Product Cards Grid (Rendered via JSON/JS) -->
+        <div class="items-grid" id="neighborItemsGrid"></div>
+
+        <!-- Right: Item Details & OTP Panel -->
+        <aside class="pickup-pass-panel" id="pickupPassPanel">
+          <div id="pickupEmptyState" class="pickup-empty-state">
+            <p class="serif-label">Select an item</p>
+            <p class="muted-sub">
+              Click any item card on the left or the featured card above to view price and lobby pickup details.
+            </p>
+          </div>
+
+          <div id="pickupDetailsContent" class="pickup-details-content hidden">
+            <div class="pass-block">
+              <h3 class="pass-heading">Item price:</h3>
+              <p class="pass-price" id="passItemPrice">Rs. 399</p>
+            </div>
+
+            <div class="pass-block">
+              <h3 class="pass-heading">Item in pickup pass:</h3>
+              <p class="pass-item-name" id="passItemName">Black second hand five-gear mountain bike</p>
+            </div>
+
+            <div class="pass-block">
+              <h3 class="pass-heading">Pickup location:</h3>
+              <p class="pass-location" id="passItemLocation">
+                Reserved at B-Wing, Avenue state Lobby Pickup.
+              </p>
+            </div>
+
+            <!-- Active OTP Box (Hidden until Confirm Pickup & Pay is clicked) -->
+            <div class="otp-box hidden" id="activeOtpBox">
+              <span class="otp-label">Active OTP : SHOW DURING PICKUP</span>
+              <span class="otp-code" id="activeOtpCode">6214</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       3. FIX & MEND SECTION
+       ========================================================= -->
+  <main id="section-fix-mend" class="page-section">
+    <section class="fix-hero">
+      <div class="fix-hero-overlay"></div>
+      <div class="fix-hero-inner">
+        <div class="fix-hero-left">
+          <h2>Familiar hands nearby who still know how to fix things.</h2>
+          <p class="fix-subcopy">
+            A zipper catch, a mixer jar, a loose sole, or a child’s bicycle. Send a quick photo
+            or walk over at an unhurried hour.
+          </p>
+
+          <div class="vouched-glass-card">
+            <div class="vouched-icon">
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div>
+              <strong>Vouched by neighbors :</strong>
+              <p>Local repairmen pinned directly by residents. No listing fees.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clicking this takes user directly to "Pin a local repair karigar" in Share or Pin -->
+        <button class="know-karigar-card" id="goToPinKarigarBtn" type="button">
+          <i class="fa-solid fa-location-dot pin-orange-icon"></i>
+          <div class="know-karigar-text">
+            <span class="know-title">Know a good karigar?</span>
+            <span class="know-sub">+ Pin them</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Bottom Search & Karma Pill -->
+      <div class="hero-bottom-bar">
+        <div class="search-pill">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            id="karigarSearchInput"
+            placeholder="Search to find karigars..."
+            aria-label="Search to find karigars"
+          />
+        </div>
+        <div class="karma-pill">
+          <span class="karma-count-display">98</span> Karma
+        </div>
+      </div>
+    </section>
+
+    <!-- Karigars Grid (4+ cards rendered via JSON/JS) -->
+    <section class="karigars-content-area">
+      <div class="karigars-grid" id="karigarsGrid"></div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       4. SHARE OR PIN SECTION (3 Sub-Sections)
+       ========================================================= -->
+  <main id="section-share-pin" class="page-section">
+    <section class="share-hero">
+      <div class="share-hero-overlay"></div>
+      <div class="share-hero-inner">
+        <h2>Share something spare, or add a trusted repair spot.</h2>
+        <p class="share-subcopy">
+          Simple steps—nothing complicated. Choose a gentle sample below if you’d like to see how it looks.
+        </p>
+
+        <div class="vouched-glass-card share-glass">
+          <div class="vouched-icon">
+            <i class="fa-regular fa-circle-check"></i>
+          </div>
+          <div>
+            <strong>Vouch for neighbors:</strong>
+            <p>
+              Help local repair artisans get discovered by neighbours without marketing budgets.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Sub-Section Selector Cards -->
+      <div class="share-subtabs-row">
+        <button class="subtab-card active" data-subtab="list-item" type="button">
+          <i class="fa-solid fa-gift subtab-icon"></i>
+          <div class="subtab-text">
+            <strong>Share a household item</strong>
+            <span>Give a free set or gentle price</span>
+          </div>
+        </button>
+
+        <button class="subtab-card" data-subtab="list-karigar" type="button">
+          <i class="fa-solid fa-screwdriver-wrench subtab-icon"></i>
+          <div class="subtab-text">
+            <strong>Pin a local repair karigar</strong>
+            <span>Help neighbors find reliable mends</span>
+          </div>
+        </button>
+
+        <button class="subtab-card" data-subtab="ewaste" type="button">
+          <i class="fa-solid fa-recycle subtab-icon"></i>
+          <div class="subtab-text">
+            <strong>Scrap &amp; E-waste</strong>
+            <span>Throw things away mindfully</span>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <section class="share-forms-wrapper">
+      <!-- SUB-SECTION A: Share a Household Item -->
+      <div id="subtab-list-item" class="subtab-panel active-subtab">
+        <div class="form-split-layout">
+          <form id="listItemForm" class="main-form-card" novalidate>
+            <h3 class="form-section-heading green-heading">What are you passing along?</h3>
+
+            <label class="field-label" for="itemNameInput">Plain name of item</label>
+            <input
+              type="text"
+              id="itemNameInput"
+              class="cream-input"
+              placeholder="e.g. Foldable yoga mat or storybooks for kids age 5-9"
+            />
+
+            <label class="field-label" for="itemConditionInput">Quiet note on condition</label>
+            <input
+              type="text"
+              id="itemConditionInput"
+              class="cream-input"
+              placeholder="Share how it was used, and why you’re letting it go..."
+            />
+
+            <h3 class="form-section-heading green-heading">Free or a small pocket price?</h3>
+            <div class="price-mode-row">
+              <button type="button" class="price-mode-btn active" id="freeNeighborBtn" data-mode="free">
+                <strong>Free to neighbor</strong>
+                <span>A simple warm handoff using Karma</span>
+              </button>
+              <button type="button" class="price-mode-btn" id="pocketPriceBtn" data-mode="paid">
+                <strong>Small pocket price</strong>
+                <span>Set price for item</span>
+              </button>
+            </div>
+
+            <label class="field-label" for="itemPriceInput">Set the pocket price (Rs.)</label>
+            <input
+              type="number"
+              id="itemPriceInput"
+              class="cream-input"
+              value="0"
+              min="0"
+              placeholder="150"
+            />
+
+            <h3 class="form-section-heading green-heading">Where can the neighbor collect it?</h3>
+
+            <label class="field-label" for="sharerNameInput">Add your name (Full)</label>
+            <input
+              type="text"
+              id="sharerNameInput"
+              class="cream-input"
+              placeholder="e.g. Aditya Verma"
+            />
+
+            <label class="field-label" for="sharerAddressInput">Add your lobby &amp; address</label>
+            <input
+              type="text"
+              id="sharerAddressInput"
+              class="cream-input"
+              placeholder="e.g. Wing C, Majestic heights, plot - 113, sector- 18"
+            />
+
+            <label class="upload-dropzone green-dropzone" for="itemImageInput">
+              <i class="fa-solid fa-camera"></i>
+              <span id="itemUploadLabel">+ Add an image of the item</span>
+              <input type="file" id="itemImageInput" accept="image/*" hidden />
+            </label>
+          </form>
+
+          <!-- Right Action Card -->
+          <div class="side-action-card">
+            <h4 class="karma-reward-title">Gain 50 Karma On<br />One Give Set</h4>
+
+            <button type="button" id="confirmPlaceItemBtn" class="side-cta-btn mint-btn">
+              <strong>Confirm placing</strong>
+              <span>Set your item for others</span>
+            </button>
+
+            <button type="button" id="setUpiPrototypeBtn" class="side-cta-btn mint-btn">
+              <strong>Set your UPI</strong>
+              <span>Share your QR code</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-SECTION B: Pin a Local Repair Karigar -->
+      <div id="subtab-list-karigar" class="subtab-panel">
+        <div class="form-split-layout">
+          <form id="listKarigarForm" class="main-form-card peach-border" novalidate>
+            <h3 class="form-section-heading rust-heading">Who does the repair, and what do they mend?</h3>
+
+            <div class="two-col-inputs">
+              <div>
+                <label class="field-label" for="karigarNameInput">Name or stall name</label>
+                <input
+                  type="text"
+                  id="karigarNameInput"
+                  class="cream-input"
+                  placeholder="e.g. Motilal shoes and stitching"
+                />
+              </div>
+              <div>
+                <label class="field-label" for="karigarMendsInput">What they fix best</label>
+                <input
+                  type="text"
+                  id="karigarMendsInput"
+                  class="cream-input"
+                  placeholder="e.g. Sandals, zippers, school bags"
+                />
+              </div>
+            </div>
+
+            <label class="field-label" for="karigarNoteInput">A gentle note for neighbors</label>
+            <input
+              type="text"
+              id="karigarNoteInput"
+              class="cream-input"
+              placeholder="e.g. Tells you the price upfront without rushing."
+            />
+
+            <h3 class="form-section-heading rust-heading">How easy is it to walk there?</h3>
+            <div class="two-col-inputs">
+              <div>
+                <label class="field-label" for="karigarAddressInput">Building name or address</label>
+                <input
+                  type="text"
+                  id="karigarAddressInput"
+                  class="cream-input"
+                  placeholder="e.g. Shop 42, Avenue street, sector 2"
+                />
+              </div>
+              <div>
+                <label class="field-label" for="karigarLandmarkInput">Nearby street landmark</label>
+                <input
+                  type="text"
+                  id="karigarLandmarkInput"
+                  class="cream-input"
+                  placeholder="e.g. In front of peepal tree"
+                />
+              </div>
+            </div>
+
+            <label class="field-label" for="karigarRateInput">What’s their usual pricing range? (Rs.)</label>
+            <input
+              type="text"
+              id="karigarRateInput"
+              class="cream-input"
+              placeholder="e.g. 50-70"
+            />
+
+            <h3 class="form-section-heading rust-heading">Add their WhatsApp number &amp; phone number</h3>
+            <label class="field-label" for="karigarPhoneInput">Add their number &amp; photo</label>
+            <input
+              type="text"
+              id="karigarPhoneInput"
+              class="cream-input"
+              placeholder="e.g. 1234-5678-90"
+            />
+
+            <label class="upload-dropzone peach-dropzone" for="karigarImageInput">
+              <i class="fa-solid fa-camera"></i>
+              <span id="karigarUploadLabel">+ Add an image of the person or shop</span>
+              <input type="file" id="karigarImageInput" accept="image/*" hidden />
+            </label>
+          </form>
+
+          <!-- Right Action Card -->
+          <div class="side-action-card peach-border">
+            <h4 class="karma-reward-title">Gain 20 Karma On<br />One Reference</h4>
+
+            <button type="button" id="confirmPlaceKarigarBtn" class="side-cta-btn peach-btn">
+              <strong>Confirm placing</strong>
+              <span>Set your refernce</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-SECTION C: Scrap & E-waste -->
+      <div id="subtab-ewaste" class="subtab-panel">
+        <div class="ewaste-card-wrapper">
+          <div class="authorized-badge">Authorized Recycler</div>
+          <div class="ewaste-main-card">
+            <h3 class="ewaste-title">Doorstep E-Waste &amp; Scrap Pickup</h3>
+            <p class="ewaste-subtitle">
+              If an item cannot be given away or fixed, hand it to verified local recyclers at transparent per-kg prices.
+            </p>
+
+            <div class="scrap-rates-grid">
+              <div class="rate-box">
+                <span>Laptops / Mobiles</span>
+                <strong>₹350–₹1200</strong>
+              </div>
+              <div class="rate-box">
+                <span>Dead Microwaves</span>
+                <strong>₹25 / kg</strong>
+              </div>
+              <div class="rate-box">
+                <span>Copper Wires</span>
+                <strong>₹45 / kg</strong>
+              </div>
+              <div class="rate-box">
+                <span>Old books / Paper</span>
+                <strong>₹14 / kg</strong>
+              </div>
+            </div>
+
+            <label class="field-label" for="ewasteItemsInput">What items are you recycling?</label>
+            <input
+              type="text"
+              id="ewasteItemsInput"
+              class="white-input"
+              placeholder="e.g. 1 dead mixer, 5 kg old paper"
+            />
+
+            <div class="two-col-inputs">
+              <div>
+                <label class="field-label" for="ewasteWindowSelect">Pickup window</label>
+                <div class="select-wrapper">
+                  <select id="ewasteWindowSelect" class="white-select">
+                    <option value="Sunday Morning (7 AM - 8 AM)">Sunday Morning (7 AM - 8 AM)</option>
+                    <option value="Sunday Morning (9 AM - 11 AM)">Sunday Morning (9 AM - 11 AM)</option>
+                    <option value="Wednesday Evening (5 PM - 7 PM)">Wednesday Evening (5 PM - 7 PM)</option>
+                    <option value="Saturday Afternoon (2 PM - 4 PM)">Saturday Afternoon (2 PM - 4 PM)</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+              </div>
+
+              <div>
+                <label class="field-label" for="ewasteAddressInput">Handover Point/ Lobby &amp; Address</label>
+                <input
+                  type="text"
+                  id="ewasteAddressInput"
+                  class="white-input"
+                  value="B- Wing Lobby, Majestic Heights, sector 8"
+                />
+              </div>
+            </div>
+
+            <button type="button" id="bookKabadiwalaBtn" class="book-kabadiwala-btn">
+              Book Verified Kabadiwala (+15 Karma)
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       PERSISTENT FOOTER (Shown in all sections at all times)
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <!-- Banyan Tree SVG Emblem matching reference -->
+        <svg class="banyan-logo" viewBox="0 0 120 90" aria-hidden="true">
+          <g fill="#c95b30">
+            <circle cx="60" cy="22" r="5" />
+            <circle cx="46" cy="25" r="4.5" />
+            <circle cx="74" cy="25" r="4.5" />
+            <circle cx="34" cy="32" r="4.5" />
+            <circle cx="86" cy="32" r="4.5" />
+            <circle cx="25" cy="42" r="4" />
+            <circle cx="95" cy="42" r="4" />
+            <circle cx="53" cy="33" r="4" />
+            <circle cx="67" cy="33" r="4" />
+            <circle cx="39" cy="41" r="4" />
+            <circle cx="81" cy="41" r="4" />
+            <circle cx="29" cy="51" r="3.5" />
+            <circle cx="91" cy="51" r="3.5" />
+          </g>
+          <g fill="#2e6b56">
+            <circle cx="53" cy="18" r="3.5" />
+            <circle cx="68" cy="18" r="3.5" />
+            <circle cx="40" cy="28" r="3.5" />
+            <circle cx="80" cy="28" r="3.5" />
+            <circle cx="60" cy="29" r="3.5" />
+            <circle cx="47" cy="37" r="3.5" />
+            <circle cx="73" cy="37" r="3.5" />
+            <circle cx="33" cy="46" r="3" />
+            <circle cx="87" cy="46" r="3" />
+          </g>
+          <!-- Trunk and aerial roots -->
+          <path
+            d="M56 76 C56 62, 54 52, 44 44 M64 76 C64 62, 66 52, 76 44 M60 76 L60 40 M38 46 L38 66 M82 46 L82 66 M48 77 Q60 72 72 77"
+            stroke="#5a3d2b"
+            stroke-width="3.2"
+            stroke-linecap="round"
+            fill="none"
+          />
+        </svg>
+        <span class="footer-brand-name">Banyan &amp; Porch</span>
+      </div>
+
+      <div class="footer-about">
+        <h4>ABOUT THE SITE</h4>
+        <p>
+          This website is owned and operated by Banyan &amp; Porch. We are dedicated to providing a
+          platform to the society to help users identify connect with their needs. Our platform is
+          intended for users looking to share their items to others.
+        </p>
+      </div>
+
+      <div class="footer-stats">
+        <p><strong id="statNeighborsCount">36</strong> neighbors shared items this month.</p>
+        <p><strong id="statMendedCount">55</strong> household things mended locally.</p>
+        <p><strong>143.2 kg</strong> kept out of bins in Nerul.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       HAND OFF POINT MODAL (Blurred backdrop, click outside to close)
+       ========================================================= -->
+  <div id="handoffModalBackdrop" class="modal-backdrop hidden" aria-hidden="true">
+    <div class="handoff-modal" id="handoffModalCard" role="dialog" aria-modal="true" aria-labelledby="modalItemTitle">
+      <span class="modal-kicker">Hand Off Point</span>
+      <h2 class="modal-item-title" id="modalItemTitle">Grey Cloth Fabric Sneakers</h2>
+      <p class="modal-shared-by" id="modalSharedBy">Shared by: Verma S. at Wing B Lobby Pickup</p>
+
+      <label class="modal-label" for="pickupWindowSelect">PICK A COMFORTABLE PICKUP WINDOW:</label>
+      <div class="modal-select-wrap">
+        <select id="pickupWindowSelect" class="modal-select">
+          <option value="5:00 PM - 6:30 PM">5:00 PM - 6:30 PM</option>
+          <option value="8:30 AM - 10:00 AM">8:30 AM - 10:00 AM</option>
+          <option value="12:30 PM - 2:00 PM">12:30 PM - 2:00 PM</option>
+          <option value="7:00 PM - 8:30 PM">7:00 PM - 8:30 PM</option>
+          <option value="Sunday 10:00 AM - 12:00 PM">Sunday 10:00 AM - 12:00 PM</option>
+        </select>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+
+      <label class="modal-label" for="warmNoteInput">WARM NOTE TO YOUR NEIGHBOR (OPTIONAL):</label>
+      <textarea
+        id="warmNoteInput"
+        class="modal-textarea"
+        rows="3"
+      >Hello! Happy to stop by B-Wing security counter during this window and take good care of it.</textarea>
+
+      <div class="modal-footer-row">
+        <span class="modal-price" id="modalPriceDisplay">Rs. 399</span>
+        <button type="button" id="confirmPickupPayBtn" class="confirm-pickup-btn">
+          CONFIRM PICKUP &amp; PAY
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
