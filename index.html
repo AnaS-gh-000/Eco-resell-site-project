@@ -119,8 +119,8 @@
   </main>
 
   <!-- =========================================================
-       2. NEIGHBOR SHARES SECTION
-       ========================================================= -->
+     2. NEIGHBOR SHARES SECTION
+     ========================================================= -->
   <main id="section-neighbor-shares" class="page-section">
     <!-- Auto-sliding Featured Product Hero -->
     <section class="neighbor-hero" id="neighborHero">
@@ -140,7 +140,7 @@
         <span class="newly-placed-link">Click this to view</span>
       </div>
 
-      <!-- Bottom Search & Karma Pill -->
+      <!-- Bottom Search & Diamonds Pill -->
       <div class="hero-bottom-bar">
         <div class="search-pill">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -151,55 +151,209 @@
             aria-label="Search to find items"
           />
         </div>
-        <div class="karma-pill">
-          <span class="karma-count-display">98</span> Karma
+        <div class="karma-pill diamonds-pill">
+          <span class="diamond-gem-icon" aria-hidden="true">💎</span>
+          <span class="karma-count-display">98</span> Diamonds
         </div>
       </div>
     </section>
 
-    <!-- Neighbor Shares Content Grid + Right Pickup Pass Box -->
-    <section class="neighbor-content-area" id="neighborGridAnchor">
-      <div class="neighbor-layout">
-        <!-- Left: 4+ Product Cards Grid (Rendered via JSON/JS) -->
-        <div class="items-grid" id="neighborItemsGrid"></div>
-
-        <!-- Right: Item Details & OTP Panel -->
-        <aside class="pickup-pass-panel" id="pickupPassPanel">
-          <div id="pickupEmptyState" class="pickup-empty-state">
-            <p class="serif-label">Select an item</p>
-            <p class="muted-sub">
-              Click any item card on the left or the featured card above to view price and lobby pickup details.
-            </p>
-          </div>
-
-          <div id="pickupDetailsContent" class="pickup-details-content hidden">
-            <div class="pass-block">
-              <h3 class="pass-heading">Item price:</h3>
-              <p class="pass-price" id="passItemPrice">Rs. 399</p>
-            </div>
-
-            <div class="pass-block">
-              <h3 class="pass-heading">Item in pickup pass:</h3>
-              <p class="pass-item-name" id="passItemName">Black second hand five-gear mountain bike</p>
-            </div>
-
-            <div class="pass-block">
-              <h3 class="pass-heading">Pickup location:</h3>
-              <p class="pass-location" id="passItemLocation">
-                Reserved at B-Wing, Avenue state Lobby Pickup.
-              </p>
-            </div>
-
-            <!-- Active OTP Box (Hidden until Confirm Pickup & Pay is clicked) -->
-            <div class="otp-box hidden" id="activeOtpBox">
-              <span class="otp-label">Active OTP : SHOW DURING PICKUP</span>
-              <span class="otp-code" id="activeOtpCode">6214</span>
-            </div>
-          </div>
-        </aside>
+    <!-- Category, Free & Favorites Filter Header -->
+    <section class="neighbor-filter-bar-wrap">
+      <div class="neighbor-filter-bar" id="neighborCategoryBar" role="tablist" aria-label="Filter items">
+        <button type="button" class="filter-chip active" data-filter="all">
+          <i class="fa-solid fa-border-all"></i>
+          <span>All Listings</span>
+        </button>
+        <button type="button" class="filter-chip" data-filter="furniture">
+          <i class="fa-solid fa-couch"></i>
+          <span>Furniture</span>
+        </button>
+        <button type="button" class="filter-chip" data-filter="electronic">
+          <i class="fa-solid fa-laptop"></i>
+          <span>Electronics</span>
+        </button>
+        <button type="button" class="filter-chip" data-filter="sports">
+          <i class="fa-solid fa-bicycle"></i>
+          <span>Cycles &amp; Sports</span>
+        </button>
+        <button type="button" class="filter-chip" data-filter="kid's gear">
+          <i class="fa-solid fa-baby-carriage"></i>
+          <span>Kids' Gear</span>
+        </button>
+        <button type="button" class="filter-chip" data-filter="books & decor">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Books &amp; Decor</span>
+        </button>
+        <button type="button" class="filter-chip" data-filter="appliance">
+          <i class="fa-solid fa-blender"></i>
+          <span>Appliances</span>
+        </button>
+        <button type="button" class="filter-chip" data-filter="free">
+          <i class="fa-solid fa-leaf"></i>
+          <span>Free</span>
+        </button>
+        <button type="button" class="filter-chip" data-filter="favorites">
+          <i class="fa-solid fa-heart"></i>
+          <span>Favorites</span>
+        </button>
       </div>
     </section>
+
+    <!-- Full-Width 4-Column Product Grid -->
+    <section class="neighbor-content-area" id="neighborGridAnchor">
+      <div class="items-grid" id="neighborItemsGrid"></div>
+    </section>
   </main>
+
+  <!-- Item Detail & Neighbor Chat Modal (Replaces Right Side Panel) -->
+  <div class="item-detail-backdrop hidden" id="itemDetailBackdrop" aria-hidden="true">
+    <div class="item-detail-modal" role="dialog" aria-modal="true" aria-labelledby="detailItemTitle">
+      <!-- Top Header Strip -->
+      <div class="detail-modal-topbar">
+        <div class="detail-topbar-meta">
+          <span class="detail-category-pill" id="detailCategoryPill">Furniture</span>
+          <span class="detail-dot">•</span>
+          <span class="detail-location-line" id="detailLocationLine">
+            <i class="fa-solid fa-location-dot"></i> Thane West • 400607 • B-Wing • Lobby Pickup
+          </span>
+        </div>
+        <button type="button" class="detail-close-btn" id="closeDetailModalBtn" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Split Body: Left Product Info + Porter | Right Offer/Claim + Chat -->
+      <div class="detail-modal-body">
+        <!-- Left Column -->
+        <div class="detail-left-col">
+          <div class="detail-image-box">
+            <img id="detailItemImage" src="" alt="" />
+            <button type="button" class="detail-save-btn" id="detailSaveHeartBtn">
+              <i class="fa-regular fa-heart"></i>
+              <span id="detailSaveLabel">Save</span>
+            </button>
+          </div>
+
+          <h2 class="detail-item-title" id="detailItemTitle">Item Title</h2>
+
+          <div class="detail-tags-row">
+            <span class="detail-tag tag-condition" id="detailConditionTag">Like New</span>
+            <span class="detail-tag tag-distance" id="detailDistanceTag">1.9 km away</span>
+            <span class="detail-tag tag-transport" id="detailTransportTag">Medium (Bike / Auto)</span>
+          </div>
+
+          <p class="detail-description" id="detailDescriptionText">
+            Item description goes here.
+          </p>
+
+          <!-- Porter / Borzo Delivery Box -->
+          <div class="porter-estimate-box">
+            <div class="porter-box-header">
+              <span class="porter-title">
+                <i class="fa-solid fa-truck-fast"></i> Hyper-Local Porter / Borzo Estimate
+              </span>
+              <span class="porter-sub-badge" id="porterSubBadge">No Vehicle Needed</span>
+            </div>
+            <div class="porter-controls-row">
+              <select id="porterOptionSelect" class="porter-select" aria-label="Select delivery option">
+                <option value="2–4 km Nearby Pin Code (3-Wheeler Ape)|180">
+                  2–4 km Nearby Pin Code (3-Wheeler Ape)
+                </option>
+                <option value="Within 2 km Society Gate (2-Wheeler)|75">
+                  Within 2 km Society Gate (2-Wheeler)
+                </option>
+                <option value="4–8 km Inter-Sector (Mini Tata Ace)|320">
+                  4–8 km Inter-Sector (Mini Tata Ace)
+                </option>
+              </select>
+              <button type="button" class="porter-book-btn" id="bookPorterBtn">
+                Book • ₹180
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="detail-right-col">
+          <!-- Paid Item Offer Box (No 'OLX-Style' header) -->
+          <div class="detail-action-card" id="detailPaidBox">
+            <div class="detail-price-top">
+              <div class="detail-price-group">
+                <span class="detail-main-price" id="detailMainPrice">₹399</span>
+                <span class="detail-mrp-price" id="detailMrpPrice">MRP ₹999</span>
+              </div>
+              <span class="detail-save-badge" id="detailDiscountBadge">Save 60%</span>
+            </div>
+            <div class="detail-offer-row">
+              <input
+                type="number"
+                id="pocketOfferInput"
+                class="pocket-offer-input"
+                placeholder="Enter offer ₹"
+                min="1"
+              />
+              <button type="button" class="send-offer-btn" id="sendPocketOfferBtn">
+                Send Pocket Offer
+              </button>
+            </div>
+          </div>
+
+          <!-- Diamond-Free Item Claim Box (Matches Image 4) -->
+          <div class="detail-action-card hidden" id="detailFreeBox">
+            <div class="detail-free-top">
+              <span class="detail-free-kicker">💎 COMMUNITY DIAMONDS SHARE</span>
+              <span class="detail-free-sub">Zero Cash Exchange</span>
+            </div>
+            <div class="detail-free-heading">
+              FREE (<span id="detailDiamondCost">50</span> Diamonds)
+            </div>
+            <p class="detail-free-note">
+              Claiming uses <span id="detailDiamondCostInline">50</span> Diamonds from your balance (<span class="karma-count-display">98</span> available) to keep sharing fair.
+            </p>
+            <button type="button" class="claim-lobby-btn" id="claimFreeLobbyBtn">
+              Claim for Lobby Pickup
+            </button>
+          </div>
+
+          <!-- Sharer Info Strip -->
+          <div class="detail-sharer-card">
+            <div class="detail-sharer-left">
+              <div class="detail-sharer-avatar" id="detailSharerInitial">A</div>
+              <div>
+                <div class="detail-sharer-name">
+                  <span id="detailSharerName">Aashi K.</span>
+                  <i class="fa-solid fa-circle-check verified-tick"></i>
+                </div>
+                <div class="detail-sharer-sub">
+                  Society Champion • <span id="detailSharerDiamonds">155</span> 💎 Diamonds
+                </div>
+              </div>
+            </div>
+            <span class="detail-reply-pill">Usually replies in 15 mins</span>
+          </div>
+
+          <!-- Direct Neighbor Chat -->
+          <div class="detail-chat-card">
+            <div class="detail-chat-header">
+              <span><i class="fa-regular fa-comments"></i> Direct Neighbor Chat</span>
+              <span class="chat-online-dot">• Online</span>
+            </div>
+            <div class="detail-chat-messages" id="detailChatMessages"></div>
+            <form class="detail-chat-input-row" id="detailChatForm">
+              <input
+                type="text"
+                id="detailChatInput"
+                placeholder="Ask about condition or lobby pickup..."
+                autocomplete="off"
+              />
+              <button type="submit" class="detail-chat-send-btn">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- =========================================================
        3. FIX & MEND SECTION
