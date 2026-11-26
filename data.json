@@ -978,58 +978,110 @@
     "isUserCreated": false
   }
   ],
-  "karigars": [
-    {
-      "id": "karigar-1",
-      "distance": "5 min walk (380 m)",
-      "name": "Shreya Tailoring & Zip Care",
-      "mends": "Kurtas, trouser hems, cushion covers & stuck zips",
-      "address": "Quiet lane behind the society tea stall, 400607",
-      "hours": "Usually here 10:30 AM – 7:00 PM",
-      "rate": "Rs. 40-60",
-      "vouched": "11 neighbors vouched",
-      "phone": "1234567890",
-      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
-      "isUserCreated": false
-    },
-    {
-      "id": "karigar-2",
-      "distance": "5 min walk (380 m)",
-      "name": "Shreya Tailoring & Zip Care",
-      "mends": "Kurtas, trouser hems, cushion covers & stuck zips",
-      "address": "Quiet lane behind the society tea stall, 400607",
-      "hours": "Usually here 10:30 AM – 7:00 PM",
-      "rate": "Rs. 40-60",
-      "vouched": "11 neighbors vouched",
-      "phone": "1234567890",
-      "image": "",
-      "isUserCreated": false
-    },
-    {
-      "id": "karigar-3",
-      "distance": "5 min walk (380 m)",
-      "name": "Shreya Tailoring & Zip Care",
-      "mends": "Kurtas, trouser hems, cushion covers & stuck zips",
-      "address": "Quiet lane behind the society tea stall, 400607",
-      "hours": "Usually here 10:30 AM – 7:00 PM",
-      "rate": "Rs. 40-60",
-      "vouched": "11 neighbors vouched",
-      "phone": "1234567890",
-      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
-      "isUserCreated": false
-    },
-    {
-      "id": "karigar-4",
-      "distance": "5 min walk (380 m)",
-      "name": "Shreya Tailoring & Zip Care",
-      "mends": "Kurtas, trouser hems, cushion covers & stuck zips",
-      "address": "Quiet lane behind the society tea stall, 400607",
-      "hours": "Usually here 10:30 AM – 7:00 PM",
-      "rate": "Rs. 40-60",
-      "vouched": "11 neighbors vouched",
-      "phone": "1234567890",
-      "image": "",
-      "isUserCreated": false
-    }
+    "karigars": [
+  {
+    "id": "karigar-1",
+    "distance": "5 min walk (380 m)",
+    "name": "Shreya Tailoring & Zip Care",
+    "mends": "Kurtas, trouser hems, cushion covers & stuck zips",
+    "address": "Quiet lane behind the society tea stall, 400607",
+    "hours": "Usually here 10:30 AM – 7:00 PM",
+    "rate": "Rs. 40-60",
+    "vouched": "11 neighbors vouched",
+    "phone": "1234567890",
+    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+    "isUserCreated": false
+  },
+  {
+    "id": "karigar-2",
+    "distance": "6 min walk (450 m)",
+    "name": "Ramesh Cobbler & Sole Works",
+    "mends": "Loose shoe soles, torn straps, leather polishing & bag stitches",
+    "address": "Corner banyan tree near B-Wing gate, 400607",
+    "hours": "Usually here 9:30 AM – 8:00 PM",
+    "rate": "Rs. 30-80",
+    "vouched": "14 neighbors vouched",
+    "phone": "9820112233",
+    "image": "",
+    "isUserCreated": false
+  },
+  {
+    "id": "karigar-3",
+    "distance": "8 min walk (620 m)",
+    "name": "Prakash Mixer & Small Appliance Fix",
+    "mends": "Mixer grinder jars, electric kettles, irons & loose plugs",
+    "address": "Shop 4, Main Market Lane near C-Wing, 400607",
+    "hours": "Usually here 11:00 AM – 8:30 PM",
+    "rate": "Rs. 70-150",
+    "vouched": "19 neighbors vouched",
+    "phone": "9820223344",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "isUserCreated": false
+  },
+  {
+    "id": "karigar-4",
+    "distance": "4 min walk (310 m)",
+    "name": "Imran Cycle & Stroller Clinic",
+    "mends": "Punctures, brake cables, wheel truing & kids' cycle chains",
+    "address": "Beside society park entrance, 400607",
+    "hours": "Usually here 8:00 AM – 1:00 PM, 4:00 PM – 8:30 PM",
+    "rate": "Rs. 25-90",
+    "vouched": "16 neighbors vouched",
+    "phone": "9820334455",
+    "image": "https://images.unsplash.com/photo-1521119989659-a83eee488004?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "isUserCreated": false
+  },
+  {
+    "id": "karigar-5",
+    "distance": "9 min walk (700 m)",
+    "name": "Gajanan Wood & Cabinet Mend",
+    "mends": "Wobbly chairs, drawer runners, loose hinges & shelf brackets",
+    "address": "Lane 2 behind D-Wing timber depot, 400607",
+    "hours": "Usually here 10:00 AM – 6:30 PM",
+    "rate": "Rs. 80-200",
+    "vouched": "9 neighbors vouched",
+    "phone": "9820445566",
+    "image": "https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "isUserCreated": false
+  },
+  {
+    "id": "karigar-6",
+    "distance": "7 min walk (540 m)",
+    "name": "Sunita Watch & Clock Corner",
+    "mends": "Wristwatch cell swaps, strap pins, wall clocks & table timers",
+    "address": "Arcade near A-Wing grocery corner, 400607",
+    "hours": "Usually here 11:00 AM – 7:30 PM",
+    "rate": "Rs. 40-100",
+    "vouched": "12 neighbors vouched",
+    "phone": "9820556677",
+    "image": "",
+    "isUserCreated": false
+  },
+  {
+    "id": "karigar-7",
+    "distance": "10 min walk (780 m)",
+    "name": "Deepak Brass & Cookware Polish",
+    "mends": "Pressure cooker gaskets, brass diyas, copper pots & handles",
+    "address": "Old bazaar row past society temple, 400607",
+    "hours": "Usually here 9:00 AM – 6:00 PM",
+    "rate": "Rs. 35-120",
+    "vouched": "15 neighbors vouched",
+    "phone": "9820667788",
+    "image": "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+    "isUserCreated": false
+  },
+  {
+    "id": "karigar-8",
+    "distance": "6 min walk (490 m)",
+    "name": "Farhan Umbrella & Frame Repair",
+    "mends": "Bent umbrella ribs, canopy patches, photo frames & zip pulls",
+    "address": "Steps near main gate milk booth, 400607",
+    "hours": "Usually here 10:00 AM – 7:00 PM",
+    "rate": "Rs. 30-75",
+    "vouched": "8 neighbors vouched",
+    "phone": "9820778899",
+    "image": "",
+    "isUserCreated": false
+  }
   ]
 }

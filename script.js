@@ -987,12 +987,17 @@ function copyKarigarContact(phone) {
   }
 }
 
+function bookKarigarUpi(karigar) {
+  showToast(`${karigar.name} has been booked via UPI.`);
+}
+
 function renderKarigars(filterText = "") {
   const grid = document.getElementById("karigarsGrid");
   if (!grid) return;
+  const karigarsList = Array.isArray(appState.karigars) ? appState.karigars : [];
   const query = filterText.trim().toLowerCase();
 
-  const filtered = appState.karigars.filter(
+  const filtered = karigarsList.filter(
     (k) =>
       k.name.toLowerCase().includes(query) ||
       k.mends.toLowerCase().includes(query) ||
@@ -1042,15 +1047,15 @@ function renderKarigars(filterText = "") {
           <i class="fa-solid fa-phone"></i>
           <span>Call</span>
         </button>
-        <button type="button" class="karigar-contact-btn whatsapp-btn">
-          <i class="fa-brands fa-whatsapp"></i>
-          <span>WhatsApp</span>
+        <button type="button" class="karigar-contact-btn upi-book-btn">
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+          <span>Book &amp; Pay (UPI)</span>
         </button>
       </div>
     `;
 
     card.querySelector(".call-btn").addEventListener("click", () => copyKarigarContact(karigar.phone));
-    card.querySelector(".whatsapp-btn").addEventListener("click", () => copyKarigarContact(karigar.phone));
+    card.querySelector(".upi-book-btn").addEventListener("click", () => bookKarigarUpi(karigar));
 
     const deleteBtn = card.querySelector(".delete-entry-btn");
     if (deleteBtn) {
@@ -1064,6 +1069,7 @@ function renderKarigars(filterText = "") {
     grid.appendChild(card);
   });
 }
+
 
 const karigarSearchInput = document.getElementById("karigarSearchInput");
 if (karigarSearchInput) {
