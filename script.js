@@ -608,6 +608,31 @@ function syncModalSaveButton(item) {
   }
 }
 
+const neighborCategoryBar = document.getElementById("neighborCategoryBar");
+const filterScrollLeftBtn = document.getElementById("filterScrollLeftBtn");
+const filterScrollRightBtn = document.getElementById("filterScrollRightBtn");
+
+function updateFilterScrollButtons() {
+  if (!neighborCategoryBar || !filterScrollLeftBtn || !filterScrollRightBtn) return;
+  const maxScrollLeft = neighborCategoryBar.scrollWidth - neighborCategoryBar.clientWidth;
+  filterScrollLeftBtn.disabled = neighborCategoryBar.scrollLeft <= 2;
+  filterScrollRightBtn.disabled = maxScrollLeft <= 2 || neighborCategoryBar.scrollLeft >= maxScrollLeft - 2;
+}
+
+if (neighborCategoryBar && filterScrollLeftBtn && filterScrollRightBtn) {
+  filterScrollLeftBtn.addEventListener("click", () => {
+    neighborCategoryBar.scrollBy({ left: -260, behavior: "smooth" });
+  });
+
+  filterScrollRightBtn.addEventListener("click", () => {
+    neighborCategoryBar.scrollBy({ left: 260, behavior: "smooth" });
+  });
+
+  neighborCategoryBar.addEventListener("scroll", updateFilterScrollButtons, { passive: true });
+  window.addEventListener("resize", updateFilterScrollButtons);
+  updateFilterScrollButtons();
+}
+
 // Render 4-Column Product Cards
 function renderNeighborItems(filterText = "") {
   const grid = document.getElementById("neighborItemsGrid");

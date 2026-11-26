@@ -427,6 +427,55 @@ body {
   display: none;
 }
 
+.filter-bar-carousel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.neighbor-filter-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.neighbor-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-scroll-btn {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid #dfd6c7;
+  background: #ffffff;
+  color: #214e2b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.filter-scroll-btn:hover:not(:disabled) {
+  background: #f2f6f2;
+  border-color: #214e2b;
+}
+
+.filter-scroll-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.filter-scroll-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 .filter-chip {
   display: inline-flex;
   align-items: center;
