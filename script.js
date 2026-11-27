@@ -1079,6 +1079,10 @@ if (karigarSearchInput) {
 /* =========================================================
    4. SHARE OR PIN SUB-TABS & FORM SUBMISSIONS
    ========================================================= */
+
+let selectedItemPricingMode = "free";
+let latestPublishedItem = null;
+
 function switchShareSubtab(subtabName) {
   document.querySelectorAll(".subtab-card").forEach((card) => {
     card.classList.toggle("active", card.dataset.subtab === subtabName);
@@ -1100,35 +1104,41 @@ if (goToPinKarigarBtn) {
   });
 }
 
-const freeNeighborBtn = document.getElementById("freeNeighborBtn");
-const pocketPriceBtn = document.getElementById("pocketPriceBtn");
+function setShareItemMode(mode) {
+  selectedItemPricingMode = mode === "paid" ? "paid" : "free";
+  const freeBtn = document.getElementById("freeNeighborBtn");
+  const paidBtn = document.getElementById("pocketPriceBtn");
+  const priceInput = document.getElementById("itemPriceInput");
 
-if (freeNeighborBtn) {
-  freeNeighborBtn.addEventListener("click", () => {
-    priceMode = "free";
-    freeNeighborBtn.classList.add("active");
-    pocketPriceBtn?.classList.remove("active");
-    const priceInput = document.getElementById("itemPriceInput");
-    if (priceInput) priceInput.value = "0";
-  });
-}
+  freeBtn?.classList.toggle("active", selectedItemPricingMode === "free");
+  paidBtn?.classList.toggle("active", selectedItemPricingMode === "paid");
 
-if (pocketPriceBtn) {
-  pocketPriceBtn.addEventListener("click", () => {
-    priceMode = "paid";
-    pocketPriceBtn.classList.add("active");
-    freeNeighborBtn?.classList.remove("active");
-    const priceInput = document.getElementById("itemPriceInput");
-    if (priceInput && priceInput.value === "0") {
-      priceInput.value = "150";
+  if (priceInput) {
+    if (selectedItemPricingMode === "free") {
+      priceInput.value = "0";
+      priceInput.disabled = true;
+    } else {
+      priceInput.disabled = false;
+      if (!priceInput.value || Number(priceInput.value) <= 0) {
+        priceInput.value = "150";
+      }
+      priceInput.focus();
     }
-  });
+  }
 }
+
+document.getElementById("freeNeighborBtn")?.addEventListener("click", () => {
+  setShareItemMode("free");
+});
+
+document.getElementById("pocketPriceBtn")?.addEventListener("click", () => {
+  setShareItemMode("paid");
+});
 
 const itemImageInput = document.getElementById("itemImageInput");
 if (itemImageInput) {
   itemImageInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
     reader.onload = (ev) => {
@@ -1143,7 +1153,7 @@ if (itemImageInput) {
 const karigarImageInput = document.getElementById("karigarImageInput");
 if (karigarImageInput) {
   karigarImageInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
     reader.onload = (ev) => {
@@ -1155,49 +1165,70 @@ if (karigarImageInput) {
   });
 }
 
-const confirmPlaceItemBtn = document.getElementById("confirmPlaceItemBtn");
-if (confirmPlaceItemBtn) {
-  confirmPlaceItemBtn.addEventListener("click", () => {
-    const name = document.getElementById("itemNameInput").value.trim();
-    const condition = document.getElementById("itemConditionInput").value.trim();
-    const priceVal = document.getElementById("itemPriceInput").value.trim();
-    const sharerName = document.getElementById("sharerNameInput").value.trim();
-    const sharerAddress = document.getElementById("sharerAddressInput").value.trim();
+function resetShareItemForm(hidePopup = true) {
+  document.getElementById("listItemForm")?.reset();
+  uploadedItemDataUrl = "";
+  const lbl = document.getElementById("itemUploadLabel");
+  if (lbl) lbl.textContent = "+ Add an image of the item";
+  setShareItemMode("free");
+  if (hidePopup) {
+    const popup = document.getElementById("adBoostPopup");
+    if (popup) popup.hidden = true;
+  }
+}
 
-    const categoryEl = document.getElementById("itemCategoryInput");
-    const diamondCostEl = document.getElementById("itemDiamondCostInput");
-    const descriptionEl = document.getElementById("itemDescriptionInput");
+document.getElementById("cancelListItemBtn")?.addEventListener("click", () => {
+  resetShareItemForm(true);
+  switchMainSection("neighbor-shares");
+  showToast("Item listing cancelled.");
+});
 
-    if (!name || !condition || !priceVal || !sharerName || !sharerAddress || !uploadedItemDataUrl) {
+const publishNeighborhoodBtn = document.getElementById("publishNeighborhoodBtn");
+if (publishNeighborhoodBtn) {
+  publishNeighborhoodBtn.addEventListener("click", () => {
+    const name = document.getElementById("itemNameInput")?.value.trim() || "";
+    const category = document.getElementById("itemCategorySelect")?.value || "furniture";
+    const condition = document.getElementById("itemConditionSelect")?.value || "Like New";
+    const priceVal = document.getElementById("itemPriceInput")?.value.trim() || "0";
+    const pincode = document.getElementById("itemPincodeSelect")?.value || "400607";
+    const sharerAddress = document.getElementById("sharerAddressInput")?.value.trim() || "";
+    const sharerName = document.getElementById("sharerNameInput")?.value.trim() || "";
+    const notes = document.getElementById("itemConditionInput")?.value.trim() || "";
+
+    if (!name || !condition || !sharerName || !sharerAddress || !notes || !uploadedItemDataUrl) {
       showToast("fill full field", true);
       return;
     }
 
-    const isFree = priceMode === "free" || Number(priceVal) === 0;
-    const numericPrice = isFree ? 0 : Number(priceVal) || 0;
-    const diamondCost = isFree ? (Number(diamondCostEl?.value) || 25) : 0;
+    const isFree = selectedItemPricingMode === "free";
+    const numericPrice = isFree ? 0 : Math.max(1, Number(priceVal) || 0);
+    const diamondCost = isFree ? 50 : 0;
+
+    const nextBalance = isFree ? getDiamondsBalance() + 50 : getDiamondsBalance();
+    if (isFree) {
+      setDiamondsBalance(nextBalance);
+      updateDiamondsDisplay();
+    }
 
     const newItem = {
       id: `user-item-${Date.now()}`,
-      category: categoryEl ? categoryEl.value : "furniture",
+      category,
       pricingType: isFree ? "free" : "paid",
       price: numericPrice,
       mrp: isFree ? 0 : Math.round(numericPrice * 2.2),
-      diamondCost: diamondCost,
-      condition: condition,
+      diamondCost,
+      condition,
       distance: "450 m away",
       transportSize: "No Vehicle Needed",
-      pincode: "400607",
+      pincode,
       title: name,
       fullTitle: name,
-      description:
-        descriptionEl?.value.trim() ||
-        `${name} in ${condition.toLowerCase()} condition at ${sharerAddress}. Easy lobby handoff.`,
+      description: notes,
       location: sharerAddress,
       pickupAddress: sharerAddress,
       sharer: sharerName,
-      sharerKarma: getDiamondsBalance() + 50,
-      sharerDiamonds: getDiamondsBalance() + 50,
+      sharerKarma: nextBalance,
+      sharerDiamonds: nextBalance,
       image: uploadedItemDataUrl,
       heroImage: uploadedItemDataUrl,
       isFavorite: false,
@@ -1205,27 +1236,33 @@ if (confirmPlaceItemBtn) {
     };
 
     appState.items.unshift(newItem);
-    setDiamondsBalance(getDiamondsBalance() + 50);
     appState.stats.neighborsShared += 1;
+    latestPublishedItem = newItem;
 
-    updateDiamondsDisplay();
     neighborSlideIndex = 0;
-    updateNeighborSlider();
+    if (typeof updateNeighborSlider === "function") updateNeighborSlider();
     renderNeighborItems();
 
-    document.getElementById("listItemForm").reset();
-    document.getElementById("itemPriceInput").value = "0";
-    priceMode = "free";
-    freeNeighborBtn?.classList.add("active");
-    pocketPriceBtn?.classList.remove("active");
-    uploadedItemDataUrl = "";
-    const lbl = document.getElementById("itemUploadLabel");
-    if (lbl) lbl.textContent = "+ Add an image of the item";
+    resetShareItemForm(false);
 
-    showToast("Item placed in Neighbor Shares! (+50 💎 Diamonds)");
-    switchMainSection("neighbor-shares");
+    const popup = document.getElementById("adBoostPopup");
+    if (popup) {
+      popup.hidden = false;
+      popup.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    showToast(
+      isFree
+        ? "Item placed in Neighbor Shares! (+50 💎 Diamonds)"
+        : "Item placed in Neighbor Shares!"
+    );
   });
 }
+
+document.getElementById("closeAdBoostPopupBtn")?.addEventListener("click", () => {
+  const popup = document.getElementById("adBoostPopup");
+  if (popup) popup.hidden = true;
+});
 
 const confirmPlaceKarigarBtn = document.getElementById("confirmPlaceKarigarBtn");
 if (confirmPlaceKarigarBtn) {
@@ -1247,13 +1284,13 @@ if (confirmPlaceKarigarBtn) {
     const newKarigar = {
       id: `user-karigar-${Date.now()}`,
       distance: "Nearby walk",
-      name: name,
-      mends: mends,
+      name,
+      mends,
       address: `${address}, ${landmark}`,
       hours: "Usually here 10:30 AM – 7:00 PM",
       rate: formattedRate,
       vouched: "1 neighbor vouched",
-      phone: phone,
+      phone,
       image: uploadedKarigarDataUrl,
       isUserCreated: true
     };

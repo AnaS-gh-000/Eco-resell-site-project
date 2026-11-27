@@ -490,86 +490,156 @@
     <section class="share-forms-wrapper">
       <!-- SUB-SECTION A: Share a Household Item -->
       <div id="subtab-list-item" class="subtab-panel active-subtab">
-        <div class="form-split-layout">
-          <form id="listItemForm" class="main-form-card" novalidate>
-            <h3 class="form-section-heading green-heading">What are you passing along?</h3>
+        <div class="composer-shell">
+          <div class="composer-banner">
+            <h3>Post Ad or Share with Neighbors</h3>
+          </div>
 
-            <label class="field-label" for="itemNameInput">Plain name of item</label>
-            <input
-              type="text"
-              id="itemNameInput"
-              class="cream-input"
-              placeholder="e.g. Foldable yoga mat or storybooks for kids age 5-9"
-            />
-
-            <label class="field-label" for="itemConditionInput">Quiet note on condition</label>
-            <input
-              type="text"
-              id="itemConditionInput"
-              class="cream-input"
-              placeholder="Share how it was used, and why you’re letting it go..."
-            />
-
-            <h3 class="form-section-heading green-heading">Free or a small pocket price?</h3>
-            <div class="price-mode-row">
-              <button type="button" class="price-mode-btn active" id="freeNeighborBtn" data-mode="free">
-                <strong>Free to neighbor</strong>
-                <span>A simple warm handoff using Karma</span>
+          <form id="listItemForm" class="composer-body" novalidate>
+            <div class="composer-section-label">1. SELECT LISTING MODE</div>
+            <div class="listing-mode-grid" role="group" aria-label="Select listing mode">
+              <button type="button" class="listing-mode-card active" id="freeNeighborBtn" data-mode="free">
+                <i class="fa-solid fa-hand-holding-heart mode-icon-green"></i>
+                <strong>Free / Diamond</strong>
+                <span>+50 Diamonds Gift</span>
               </button>
-              <button type="button" class="price-mode-btn" id="pocketPriceBtn" data-mode="paid">
-                <strong>Small pocket price</strong>
-                <span>Set price for item</span>
+
+              <button type="button" class="listing-mode-card" id="pocketPriceBtn" data-mode="paid">
+                <i class="fa-solid fa-tag mode-icon-rust"></i>
+                <strong>Buy Now / Offer</strong>
+                <span>Fixed Price</span>
               </button>
             </div>
 
-            <label class="field-label" for="itemPriceInput">Set the pocket price (Rs.)</label>
-            <input
-              type="number"
-              id="itemPriceInput"
-              class="cream-input"
-              value="0"
-              min="0"
-              placeholder="150"
-            />
+            <div class="composer-field-group">
+              <label class="field-label" for="itemNameInput">Item / Service Title *</label>
+              <input
+                type="text"
+                id="itemNameInput"
+                class="composer-input"
+                placeholder="e.g. Solid Sheesham Study Chair or Kids 20-inch Hero Cycle"
+              />
+            </div>
 
-            <h3 class="form-section-heading green-heading">Where can the neighbor collect it?</h3>
+            <div class="two-col-inputs">
+              <div class="composer-field-group">
+                <label class="field-label" for="itemCategorySelect">Category *</label>
+                <div class="select-wrapper">
+                  <select id="itemCategorySelect" class="composer-select">
+                    <option value="furniture">Furniture</option>
+                    <option value="electronic">Electronics</option>
+                    <option value="sports">Cycles &amp; Sports</option>
+                    <option value="kid's gear">Kids' Gear</option>
+                    <option value="books & decor">Books &amp; Decor</option>
+                    <option value="appliance">Appliances</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+              </div>
 
-            <label class="field-label" for="sharerNameInput">Add your name (Full)</label>
-            <input
-              type="text"
-              id="sharerNameInput"
-              class="cream-input"
-              placeholder="e.g. Aditya Verma"
-            />
+              <div class="composer-field-group">
+                <label class="field-label" for="itemConditionSelect">Condition *</label>
+                <div class="select-wrapper">
+                  <select id="itemConditionSelect" class="composer-select">
+                    <option value="Like New">Like New</option>
+                    <option value="Barely Used">Barely Used</option>
+                    <option value="Gently Used">Gently Used</option>
+                    <option value="Good Condition">Good Condition</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+              </div>
+            </div>
 
-            <label class="field-label" for="sharerAddressInput">Add your lobby &amp; address</label>
-            <input
-              type="text"
-              id="sharerAddressInput"
-              class="cream-input"
-              placeholder="e.g. Wing C, Majestic heights, plot - 113, sector- 18"
-            />
+            <div class="two-col-inputs">
+              <div class="composer-field-group">
+                <label class="field-label" for="itemPriceInput">Pocket Price (₹) *</label>
+                <input
+                  type="number"
+                  id="itemPriceInput"
+                  class="composer-input"
+                  value="0"
+                  min="0"
+                  placeholder="1200"
+                  disabled
+                />
+              </div>
+
+              <div class="composer-field-group">
+                <label class="field-label" for="itemPincodeSelect">Neighbourhood / Pin Code *</label>
+                <div class="select-wrapper">
+                  <select id="itemPincodeSelect" class="composer-select">
+                    <option value="400607" selected>Thane West • 400607</option>
+                    <option value="400601">Thane West 400601</option>
+                    <option value="400610">Thane West 400610</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="two-col-inputs">
+              <div class="composer-field-group">
+                <label class="field-label" for="sharerAddressInput">Society / Lobby Pickup Spot *</label>
+                <input
+                  type="text"
+                  id="sharerAddressInput"
+                  class="composer-input"
+                  placeholder="e.g. Rodas Enclave Lobby / Tower B Gate"
+                />
+              </div>
+
+              <div class="composer-field-group">
+                <label class="field-label" for="sharerNameInput">Your Name *</label>
+                <input
+                  type="text"
+                  id="sharerNameInput"
+                  class="composer-input"
+                  placeholder="e.g. Aditya Verma"
+                />
+              </div>
+            </div>
+
+            <div class="composer-field-group">
+              <label class="field-label" for="itemConditionInput">Honest Condition Notes &amp; Dimensions *</label>
+              <textarea
+                id="itemConditionInput"
+                class="composer-textarea"
+                rows="3"
+                placeholder="Share helpful details—age of item, any minor scratches, included accessories, or preferred lobby handoff timing..."
+              ></textarea>
+            </div>
 
             <label class="upload-dropzone green-dropzone" for="itemImageInput">
               <i class="fa-solid fa-camera"></i>
               <span id="itemUploadLabel">+ Add an image of the item</span>
               <input type="file" id="itemImageInput" accept="image/*" hidden />
             </label>
+
+            <div class="composer-footer-actions">
+              <button type="button" id="cancelListItemBtn" class="composer-cancel-btn">
+                Cancel
+              </button>
+              <button type="button" id="publishNeighborhoodBtn" class="composer-publish-btn">
+                Publish to Neighbourhood
+              </button>
+            </div>
           </form>
+        </div>
 
-          <!-- Right Action Card -->
-          <div class="side-action-card">
-            <h4 class="karma-reward-title">Gain 50 Karma On<br />One Give Set</h4>
-
-            <button type="button" id="confirmPlaceItemBtn" class="side-cta-btn mint-btn">
-              <strong>Confirm placing</strong>
-              <span>Set your item for others</span>
-            </button>
-
-            <button type="button" id="setUpiPrototypeBtn" class="side-cta-btn mint-btn">
-              <strong>Set your UPI</strong>
-              <span>Share your QR code</span>
-            </button>
+        <!-- Bottom Quick-Sell Ad Boost Popup Box -->
+        <div id="adBoostPopup" class="ad-boost-popup" role="dialog" aria-live="polite" aria-label="Promote item to Ad Posts" hidden>
+          <div class="ad-boost-popup-card">
+            <h4 class="ad-boost-heading">Want to sell your item quickly?</h4>
+            <p class="ad-boost-subtext">Why not place your item to the frontline? Start Ad Posts today.</p>
+            <div class="ad-boost-actions">
+              <button type="button" id="postToAdsBtn" class="ad-boost-primary-btn">
+                Post To Ads  (Rs. 29)
+              </button>
+              <button type="button" id="closeAdBoostPopupBtn" class="ad-boost-cancel-btn">
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -657,7 +727,7 @@
 
           <!-- Right Action Card -->
           <div class="side-action-card peach-border">
-            <h4 class="karma-reward-title">Gain 20 Karma On<br />One Reference</h4>
+            <h4 class="karma-reward-title">Gain 20 Diamonds On<br />One Reference</h4>
 
             <button type="button" id="confirmPlaceKarigarBtn" class="side-cta-btn peach-btn">
               <strong>Confirm placing</strong>
@@ -730,7 +800,7 @@
             </div>
 
             <button type="button" id="bookKabadiwalaBtn" class="book-kabadiwala-btn">
-              Book Verified Kabadiwala (+15 Karma)
+              Book Verified Kabadiwala (+15 Diamonds)
             </button>
           </div>
         </div>
