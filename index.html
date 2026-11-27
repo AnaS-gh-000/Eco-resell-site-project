@@ -646,94 +646,118 @@
 
       <!-- SUB-SECTION B: Pin a Local Repair Karigar -->
       <div id="subtab-list-karigar" class="subtab-panel">
-        <div class="form-split-layout">
-          <form id="listKarigarForm" class="main-form-card peach-border" novalidate>
-            <h3 class="form-section-heading rust-heading">Who does the repair, and what do they mend?</h3>
+        <div class="composer-shell karigar-composer-shell">
+          <div class="composer-banner karigar-composer-banner">
+            <h3>Pin a local Karigar or register as one</h3>
+          </div>
+
+          <form id="listKarigarForm" class="composer-body" novalidate>
+            <div class="composer-section-label">1. SELECT REGISTERING MODE</div>
+            <div class="listing-mode-grid" role="group" aria-label="Select registering mode">
+              <button type="button" class="listing-mode-card karigar-mode-card active" id="registerSelfBtn" data-reg-mode="self">
+                <i class="fa-solid fa-user-check mode-icon-rust"></i>
+                <strong>Register as a Karigar</strong>
+                <span>List your own repair craft</span>
+              </button>
+
+              <button type="button" class="listing-mode-card karigar-mode-card" id="registerKnownBtn" data-reg-mode="known">
+                <i class="fa-solid fa-address-book mode-icon-rust"></i>
+                <strong>Register a known Karigar</strong>
+                <span>Pin a trusted local repairer</span>
+              </button>
+            </div>
 
             <div class="two-col-inputs">
-              <div>
-                <label class="field-label" for="karigarNameInput">Name or stall name</label>
+              <div class="composer-field-group">
+                <label class="field-label" for="karigarNameInput">Name or stall name *</label>
                 <input
                   type="text"
                   id="karigarNameInput"
-                  class="cream-input"
+                  class="composer-input karigar-input"
                   placeholder="e.g. Motilal shoes and stitching"
                 />
               </div>
-              <div>
-                <label class="field-label" for="karigarMendsInput">What they fix best</label>
+
+              <div class="composer-field-group">
+                <label class="field-label" for="karigarMendsInput">What they fix best *</label>
                 <input
                   type="text"
                   id="karigarMendsInput"
-                  class="cream-input"
+                  class="composer-input karigar-input"
                   placeholder="e.g. Sandals, zippers, school bags"
                 />
               </div>
             </div>
 
-            <label class="field-label" for="karigarNoteInput">A gentle note for neighbors</label>
-            <input
-              type="text"
-              id="karigarNoteInput"
-              class="cream-input"
-              placeholder="e.g. Tells you the price upfront without rushing."
-            />
+            <div class="composer-field-group">
+              <label class="field-label" for="karigarNoteInput">A gentle note for neighbors *</label>
+              <input
+                type="text"
+                id="karigarNoteInput"
+                class="composer-input karigar-input"
+                placeholder="e.g. Tells you the price upfront without rushing."
+              />
+            </div>
 
-            <h3 class="form-section-heading rust-heading">How easy is it to walk there?</h3>
             <div class="two-col-inputs">
-              <div>
-                <label class="field-label" for="karigarAddressInput">Building name or address</label>
+              <div class="composer-field-group">
+                <label class="field-label" for="karigarAddressInput">Building name or address *</label>
                 <input
                   type="text"
                   id="karigarAddressInput"
-                  class="cream-input"
+                  class="composer-input karigar-input"
                   placeholder="e.g. Shop 42, Avenue street, sector 2"
                 />
               </div>
-              <div>
-                <label class="field-label" for="karigarLandmarkInput">Nearby street landmark</label>
+
+              <div class="composer-field-group">
+                <label class="field-label" for="karigarLandmarkInput">Nearby street landmark *</label>
                 <input
                   type="text"
                   id="karigarLandmarkInput"
-                  class="cream-input"
+                  class="composer-input karigar-input"
                   placeholder="e.g. In front of peepal tree"
                 />
               </div>
             </div>
 
-            <label class="field-label" for="karigarRateInput">What’s their usual pricing range? (Rs.)</label>
-            <input
-              type="text"
-              id="karigarRateInput"
-              class="cream-input"
-              placeholder="e.g. 50-70"
-            />
+            <div class="two-col-inputs">
+              <div class="composer-field-group">
+                <label class="field-label" for="karigarRateInput">Usual pricing range (Rs.) *</label>
+                <input
+                  type="text"
+                  id="karigarRateInput"
+                  class="composer-input karigar-input"
+                  placeholder="e.g. 50-70"
+                />
+              </div>
 
-            <h3 class="form-section-heading rust-heading">Add their WhatsApp number &amp; phone number</h3>
-            <label class="field-label" for="karigarPhoneInput">Add their number &amp; photo</label>
-            <input
-              type="text"
-              id="karigarPhoneInput"
-              class="cream-input"
-              placeholder="e.g. 1234-5678-90"
-            />
+              <div class="composer-field-group">
+                <label class="field-label" for="karigarPhoneInput">Phone number *</label>
+                <input
+                  type="text"
+                  id="karigarPhoneInput"
+                  class="composer-input karigar-input"
+                  placeholder="e.g. 9820112233"
+                />
+              </div>
+            </div>
 
             <label class="upload-dropzone peach-dropzone" for="karigarImageInput">
               <i class="fa-solid fa-camera"></i>
               <span id="karigarUploadLabel">+ Add an image of the person or shop</span>
               <input type="file" id="karigarImageInput" accept="image/*" hidden />
             </label>
+
+            <div class="composer-footer-actions">
+              <button type="button" id="cancelListKarigarBtn" class="composer-cancel-btn">
+                Cancel
+              </button>
+              <button type="button" id="confirmPlaceKarigarBtn" class="karigar-publish-btn">
+                List Karigar (+20 Diamonds)
+              </button>
+            </div>
           </form>
-
-          <!-- Right Action Card -->
-          <div class="side-action-card peach-border">
-            <h4 class="karma-reward-title">Gain 20 Diamonds On<br />One Reference</h4>
-
-            <button type="button" id="confirmPlaceKarigarBtn" class="side-cta-btn peach-btn">
-              <strong>Confirm placing</strong>
-              <span>Set your refernce</span>
-            </button>
-          </div>
         </div>
       </div>
 

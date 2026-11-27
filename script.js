@@ -968,23 +968,57 @@ document.getElementById("claimFreeLobbyBtn").addEventListener("click", () => {
 /* =========================================================
    3. FIX & MEND: KARIGARS GRID & CLIPBOARD COPY
    ========================================================= */
-function copyKarigarContact(phone) {
-  const cleanPhone = (phone || "1234567890").replace(/[^0-9]/g, "") || "1234567890";
-  const textToCopy = `Karigar Phone no. ${cleanPhone} \nMessage on WhatsApp!`;
+let selectedKarigarRegMode = "self";
+uploadedKarigarDataUrl = "";
+ewasteBooked = false;
 
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(textToCopy).then(() => {
-      showToast(`Copied: Karigar Phone no. ${cleanPhone}`);
-    });
-  } else {
-    const tempArea = document.createElement("textarea");
-    tempArea.value = textToCopy;
-    document.body.appendChild(tempArea);
-    tempArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempArea);
-    showToast(`Copied: Karigar Phone no. ${cleanPhone}`);
+function setKarigarRegisterMode(mode) {
+  selectedKarigarRegMode = mode === "known" ? "known" : "self";
+  document
+    .getElementById("registerSelfBtn")
+    ?.classList.toggle("active", selectedKarigarRegMode === "self");
+  document
+    .getElementById("registerKnownBtn")
+    ?.classList.toggle("active", selectedKarigarRegMode === "known");
+}
+
+document.getElementById("registerSelfBtn")?.addEventListener("click", () => {
+  setKarigarRegisterMode("self");
+});
+
+document.getElementById("registerKnownBtn")?.addEventListener("click", () => {
+  setKarigarRegisterMode("known");
+});
+
+document.getElementById("cancelListKarigarBtn")?.addEventListener("click", () => {
+  document.getElementById("listKarigarForm")?.reset();
+  uploadedKarigarDataUrl = "";
+  const lbl = document.getElementById("karigarUploadLabel");
+  if (lbl) lbl.textContent = "+ Add an image of the person or shop";
+  setKarigarRegisterMode("self");
+  switchMainSection("fix-mend");
+  showToast("Karigar listing cancelled.");
+});
+
+function copyKarigarContact(phone) {
+  const cleanPhone = String(phone || "").trim();
+  if (!cleanPhone) {
+    showToast("No phone number available.", true);
+    return;
   }
+
+  if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+    navigator.clipboard.writeText(cleanPhone).catch(() => {});
+  } else {
+    const tempInput = document.createElement("input");
+    tempInput.value = cleanPhone;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+  }
+
+  showToast(`Copied ${cleanPhone} to clipboard.`);
 }
 
 function bookKarigarUpi(karigar) {
@@ -1070,7 +1104,6 @@ function renderKarigars(filterText = "") {
   });
 }
 
-
 const karigarSearchInput = document.getElementById("karigarSearchInput");
 if (karigarSearchInput) {
   karigarSearchInput.addEventListener("input", (e) => renderKarigars(e.target.value));
@@ -1079,8 +1112,8 @@ if (karigarSearchInput) {
 /* =========================================================
    4. SHARE OR PIN SUB-TABS & FORM SUBMISSIONS
    ========================================================= */
-
 let selectedItemPricingMode = "free";
+uploadedItemDataUrl = "";
 let latestPublishedItem = null;
 
 function switchShareSubtab(subtabName) {
@@ -1267,13 +1300,13 @@ document.getElementById("closeAdBoostPopupBtn")?.addEventListener("click", () =>
 const confirmPlaceKarigarBtn = document.getElementById("confirmPlaceKarigarBtn");
 if (confirmPlaceKarigarBtn) {
   confirmPlaceKarigarBtn.addEventListener("click", () => {
-    const name = document.getElementById("karigarNameInput").value.trim();
-    const mends = document.getElementById("karigarMendsInput").value.trim();
-    const note = document.getElementById("karigarNoteInput").value.trim();
-    const address = document.getElementById("karigarAddressInput").value.trim();
-    const landmark = document.getElementById("karigarLandmarkInput").value.trim();
-    const rate = document.getElementById("karigarRateInput").value.trim();
-    const phone = document.getElementById("karigarPhoneInput").value.trim();
+    const name = document.getElementById("karigarNameInput")?.value.trim() || "";
+    const mends = document.getElementById("karigarMendsInput")?.value.trim() || "";
+    const note = document.getElementById("karigarNoteInput")?.value.trim() || "";
+    const address = document.getElementById("karigarAddressInput")?.value.trim() || "";
+    const landmark = document.getElementById("karigarLandmarkInput")?.value.trim() || "";
+    const rate = document.getElementById("karigarRateInput")?.value.trim() || "";
+    const phone = document.getElementById("karigarPhoneInput")?.value.trim() || "";
 
     if (!name || !mends || !note || !address || !landmark || !rate || !phone || !uploadedKarigarDataUrl) {
       showToast("fill full field", true);
@@ -1285,11 +1318,11 @@ if (confirmPlaceKarigarBtn) {
       id: `user-karigar-${Date.now()}`,
       distance: "Nearby walk",
       name,
-      mends,
+      mends: `${mends} — ${note}`,
       address: `${address}, ${landmark}`,
       hours: "Usually here 10:30 AM – 7:00 PM",
       rate: formattedRate,
-      vouched: "1 neighbor vouched",
+      vouched: selectedKarigarRegMode === "self" ? "Self-registered karigar" : "1 neighbor vouched",
       phone,
       image: uploadedKarigarDataUrl,
       isUserCreated: true
@@ -1302,12 +1335,13 @@ if (confirmPlaceKarigarBtn) {
     updateDiamondsDisplay();
     renderKarigars();
 
-    document.getElementById("listKarigarForm").reset();
+    document.getElementById("listKarigarForm")?.reset();
     uploadedKarigarDataUrl = "";
     const lbl = document.getElementById("karigarUploadLabel");
     if (lbl) lbl.textContent = "+ Add an image of the person or shop";
+    setKarigarRegisterMode("self");
 
-    showToast("Karigar pinned to Fix & Mend! (+20 💎 Diamonds)");
+    showToast("Karigar pinned to Fix & Mend! (+20 Diamonds)");
     switchMainSection("fix-mend");
   });
 }

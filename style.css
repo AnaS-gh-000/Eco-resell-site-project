@@ -2135,6 +2135,43 @@ body {
   background: #f5f1ea;
 }
 
+/* Karigar Composer Orange Theme */
+.karigar-composer-shell {
+  border-color: #e6c6b5;
+}
+
+.karigar-composer-banner {
+  background: var(--terracotta);
+}
+
+.karigar-mode-card.active {
+  border-color: var(--terracotta);
+  border-width: 2px;
+  background: var(--bg-peach-soft);
+}
+
+.karigar-input:focus {
+  border-color: var(--terracotta);
+}
+
+.karigar-publish-btn {
+  background: var(--terracotta);
+  border: 1.5px solid var(--terracotta);
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-family: var(--font-sans);
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.karigar-publish-btn:hover {
+  opacity: 0.94;
+  transform: translateY(-1px);
+}
+
 /* Sub-section B & C Shared Layout */
 .form-split-layout {
   display: grid;
