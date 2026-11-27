@@ -267,6 +267,278 @@ body {
   right: 34px;
 }
 
+.neighbor-hero.sale-busters-hero,
+.sale-busters-hero {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 325px;
+  background: #0b0b0b;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  padding: 7rem 3rem 4rem;
+}
+
+.neighbor-hero-bg {
+  position: absolute;
+  inset: -6px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(1.2px) brightness(0.98);
+  transform: scale(1.01);
+  opacity: 0.88;
+  transition: background-image 0.6s ease;
+  z-index: 1;
+}
+
+.neighbor-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.56) 0%,
+    rgba(0, 0, 0, 0.24) 55%,
+    rgba(0, 0, 0, 0.34) 100%
+  );
+  z-index: 2;
+}
+
+.sale-hero-arrow {
+  top: 135px;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.92);
+  z-index: 20;
+}
+
+.sale-hero-layout {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.sale-hero-copy {
+  padding-top: 8px;
+}
+
+.sale-hero-copy h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(2.4rem, 4vw, 3.65rem);
+  font-weight: 800;
+  line-height: 1.06;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+  letter-spacing: -0.02em;
+  max-width: 660px;
+  margin: 0 0 12px;
+}
+
+.sale-hero-subtext {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.65);
+  line-height: 1.45;
+  margin: 0 0 16px;
+}
+
+.sale-hero-right-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  min-width: 0;
+}
+
+.sale-video-card {
+  position: relative;
+  width: 100%;
+  max-width: 310px;
+  aspect-ratio: 18 / 12;
+  flex-shrink: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #141715;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.newly-placed-card.sale-neon-card {
+  position: relative;
+  inset: auto;
+  z-index: 5;
+  width: 100%;
+  max-width: 245px;
+  flex-shrink: 0;
+  margin-top: 0;
+  padding: 9px 13px;
+  border-radius: 12px;
+  background: rgba(10, 12, 11, 0.92);
+  border: 1.5px solid #39e56b;
+  color: #39e56b;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  text-align: left;
+  cursor: pointer;
+}
+
+.sale-hero-pill-btn {
+  background: #39e56b;
+  color: #0b140d;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(57, 229, 107, 0.25);
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+.sale-hero-pill-btn:hover {
+  background: #4ef07c;
+  transform: translateY(-2px);
+}
+
+.sale-hero-right-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.sale-video-card {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #141715;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+}
+
+.sale-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sale-video-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(11, 14, 12, 0.78);
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sale-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #39e56b;
+}
+
+.sale-video-toggle-btn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #39e56b;
+  background: rgba(12, 16, 13, 0.85);
+  color: #39e56b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+.sale-video-toggle-btn:hover {
+  transform: scale(1.06);
+  background: #39e56b;
+  color: #0b140d;
+}
+
+/* Smaller, Lower Dark Card with Neon-Green Border & Text */
+.newly-placed-card.sale-neon-card {
+  width: 100%;
+  max-width: 255px;
+  margin-top: 4px;
+  padding: 11px 14px;
+  border-radius: 14px;
+  background: rgba(12, 16, 13, 0.88);
+  border: 1.5px solid #39e56b;
+  color: #39e56b;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+.newly-placed-card.sale-neon-card:hover {
+  transform: translateY(-2px);
+  background: rgba(20, 28, 22, 0.96);
+}
+
+.sale-neon-card .newly-placed-heading {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #39e56b;
+  opacity: 0.88;
+  margin-bottom: 2px;
+}
+
+.sale-neon-card .newly-placed-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #39e56b;
+  line-height: 1.25;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sale-neon-card .newly-placed-link {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #39e56b;
+  text-decoration: underline;
+}
+
+@media (max-width: 960px) {
+  .sale-busters-hero {
+    padding: 36px 56px;
+  }
+  .sale-hero-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .sale-hero-right-col {
+    align-items: flex-start;
+  }
+}
+
 /* =========================================================
    2. NEIGHBOR SHARES SECTION
    ========================================================= */

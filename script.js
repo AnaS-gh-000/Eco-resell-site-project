@@ -516,6 +516,43 @@ function isItemFree(item) {
   return item.pricingType === "free" || Number(item.price) === 0;
 }
 
+document.getElementById("listItemViaAdsHeroBtn")?.addEventListener("click", () => {
+  if (typeof switchMainSection === "function") {
+    switchMainSection("share-pin");
+  }
+  if (typeof switchShareSubtab === "function") {
+    switchShareSubtab("list-item");
+  }
+});
+
+const saleItemVideo = document.getElementById("saleItemVideo");
+const saleVideoToggleBtn = document.getElementById("saleVideoToggleBtn");
+const saleVideoToggleIcon = document.getElementById("saleVideoToggleIcon");
+
+function syncSaleVideoIcon() {
+  if (!saleItemVideo || !saleVideoToggleIcon) return;
+  const isPlaying = !saleItemVideo.paused && !saleItemVideo.ended;
+  saleVideoToggleIcon.className = isPlaying ? "fa-solid fa-pause" : "fa-solid fa-play";
+}
+
+saleVideoToggleBtn?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  if (!saleItemVideo) return;
+  if (saleItemVideo.paused) {
+    saleItemVideo.muted = false;
+    saleItemVideo.play().catch(() => {
+      saleItemVideo.muted = true;
+      saleItemVideo.play().catch(() => {});
+    });
+  } else {
+    saleItemVideo.pause();
+  }
+  syncSaleVideoIcon();
+});
+
+saleItemVideo?.addEventListener("play", syncSaleVideoIcon);
+saleItemVideo?.addEventListener("pause", syncSaleVideoIcon);
+
 function updateNeighborSlider() {
   if (!appState.items.length) return;
   neighborSlideIndex = (neighborSlideIndex + appState.items.length) % appState.items.length;

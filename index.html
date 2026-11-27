@@ -123,22 +123,68 @@
      ========================================================= -->
   <main id="section-neighbor-shares" class="page-section">
     <!-- Auto-sliding Featured Product Hero -->
-    <section class="neighbor-hero" id="neighborHero">
+    <section class="neighbor-hero sale-busters-hero" id="neighborHero">
       <div class="neighbor-hero-bg" id="neighborHeroBg"></div>
+      <div class="neighbor-hero-scrim" aria-hidden="true"></div>
 
-      <button class="carousel-arrow left-arrow dark-arrow" id="neighborPrevBtn" aria-label="Previous product">
+      <button class="carousel-arrow left-arrow sale-hero-arrow" id="neighborPrevBtn" aria-label="Previous product">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-      <button class="carousel-arrow right-arrow dark-arrow" id="neighborNextBtn" aria-label="Next product">
+      <button class="carousel-arrow right-arrow sale-hero-arrow" id="neighborNextBtn" aria-label="Next product">
         <i class="fa-solid fa-chevron-right"></i>
       </button>
 
-      <!-- Synced Orange-Border Product Card on Right -->
-      <div class="newly-placed-card" id="newlyPlacedCard" role="button" tabindex="0">
-        <span class="newly-placed-heading">Newly placed item:</span>
-        <p class="newly-placed-title" id="newlyPlacedTitle">Grey cloth fabric sneakers</p>
-        <span class="newly-placed-link">Click this to view</span>
+      <div class="sale-hero-layout">
+        <div class="sale-hero-copy">
+          <h2>SALE BUSTERS 48 Hours of DISCOUNT ITEMS...</h2>
+          <p class="sale-hero-subtext">
+            Find items at penny price. Active for 48 hours per item.
+          </p>
+          <button type="button" class="sale-hero-pill-btn" id="listItemViaAdsHeroBtn">
+            List Your Item via Ads Posts
+          </button>
+        </div>
+
+        <div class="sale-hero-right-col">
+          <!-- Playable Item Showcase Video Card -->
+          <div class="sale-video-card" id="saleItemVideoCard">
+            <video
+              id="saleItemVideo"
+              class="sale-video-player"
+              playsinline
+              muted
+              loop
+              preload="metadata"
+              poster="asset/Screenshot 2026-11-27 194637.png"
+            >
+              <source
+                src="asset/128564-741747704_medium.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <div class="sale-video-badge">
+              <span class="sale-live-dot" aria-hidden="true"></span>
+              <span>Neighbor Item Clip</span>
+            </div>
+            <button
+              type="button"
+              class="sale-video-toggle-btn"
+              id="saleVideoToggleBtn"
+              aria-label="Play or pause item video"
+            >
+              <i class="fa-solid fa-play" id="saleVideoToggleIcon"></i>
+            </button>
+          </div>
+
+          <!-- Compact Lower Dark Neon-Green Card -->
+          <div class="newly-placed-card sale-neon-card" id="newlyPlacedCard" role="button" tabindex="0">
+            <span class="newly-placed-heading">Newly placed item:</span>
+            <p class="newly-placed-title" id="newlyPlacedTitle">Grey cloth fabric sneakers</p>
+            <span class="newly-placed-link">Click this to view</span>
+          </div>
+        </div>
       </div>
+    </section>
 
       <!-- Bottom Search & Diamonds Pill -->
       <div class="hero-bottom-bar">
